@@ -360,6 +360,24 @@ namespace FinePrint
             return roverFail[generator.Next(0, roverFail.Count)];
         }
 
+        public static string numberNoun(int n, string singular, string plural = null)
+        {
+            if (n == 1)
+                return "one " + singular;
+            else
+            {
+                if (plural == null)
+                {
+                    plural = singular + "s";
+                }
+                if (n < 0 || n > 20)
+                    return n.ToString() + " " + plural;
+                else
+                    return integerToWord(n) + " " + plural;
+            }
+
+        }
+
         public static string integerToWord(int x)
         {
             string[] integerMap = new string[21] { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen", "twenty" };
