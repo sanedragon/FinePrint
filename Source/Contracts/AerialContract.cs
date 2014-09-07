@@ -23,7 +23,7 @@ namespace FinePrint.Contracts
 
 		protected override bool Generate()
 		{
-            if (AreWingsUnlocked() == false)
+            //if (AreWingsUnlocked() == false)
                 return false;
 
             int offeredContracts = 0;

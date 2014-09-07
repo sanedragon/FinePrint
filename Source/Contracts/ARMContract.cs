@@ -20,7 +20,7 @@ namespace FinePrint.Contracts
 
 		protected override bool Generate()
 		{
-            if (Util.haveTechnology("GrapplingDevice") == false)
+            //if (Util.haveTechnology("GrapplingDevice") == false)
                 return false;
 
             System.Random generator = new System.Random(base.MissionSeed);

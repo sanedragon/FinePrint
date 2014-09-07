@@ -28,6 +28,7 @@ namespace FinePrint.Contracts
             float fundsMultiplier = 1;
             float reputationMultiplier = 1;
 
+            /* debug
             int offeredContracts = 0;
             int activeContracts = 0;
             foreach (EvacuateContract contract in ContractSystem.Instance.GetCurrentContracts<EvacuateContract>())
@@ -39,6 +40,7 @@ namespace FinePrint.Contracts
             }
             if (offeredContracts >= FPConfig.Evacuate.MaximumAvailable || activeContracts >= FPConfig.Evacuate.MaximumActive)
                 return false;
+            */
 
             Vessel vessel = FindAppropriateVessel(generator);
             if (vessel == null)

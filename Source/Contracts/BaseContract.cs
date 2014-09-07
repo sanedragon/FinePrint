@@ -19,7 +19,7 @@ namespace FinePrint.Contracts
 
         protected override bool Generate()
         {
-            if (AreFacilitiesUnlocked() == false)
+            //if (AreFacilitiesUnlocked() == false)
                 return false;
 
             //Facility fails generation on duplicates, so we can't have many out at once.

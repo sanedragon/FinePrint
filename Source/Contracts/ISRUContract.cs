@@ -25,7 +25,7 @@ namespace FinePrint.Contracts
         {
             //ISRU fails generation on duplicates, so we can't have many out at once.
             int totalContracts = ContractSystem.Instance.GetCurrentContracts<ISRUContract>().Count();
-            if (totalContracts >= FPConfig.ISRU.MaximumExistent)
+            //if (totalContracts >= FPConfig.ISRU.MaximumExistent)
                 return false;
 
             if (TechUnlocked() == false)

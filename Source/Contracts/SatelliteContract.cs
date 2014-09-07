@@ -25,7 +25,7 @@ namespace FinePrint.Contracts
 
         protected override bool Generate()
         {
-            if (AreSatellitesUnlocked() == false)
+            //if (AreSatellitesUnlocked() == false)
                 return false;
 
             //Allow four contracts in pocket but only two on the board at a time.
