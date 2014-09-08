@@ -385,33 +385,26 @@ namespace FinePrint
 
         public static bool TryConvert<T>(string input, out T value, ref string error)
         {
-            if (typeof(T).IsEnum)
+            try
             {
-                try
+                if (typeof(T).IsEnum)
                 {
                     value = (T)Enum.Parse(typeof(T), input);
                     return true;
-                }
-                catch (Exception e)
+                } else if (typeof(T) == typeof(Guid))
                 {
-                    error = e.Message;
-                    value = default(T);
-                    return false;
-                }
-            }
-            else
-            {
-                try
+                    value = (T)(object)(new Guid(input));
+                    return true;
+                } else
                 {
                     value = (T)System.Convert.ChangeType(input, typeof(T));
                     return true;
                 }
-                catch (Exception e)
-                {
-                    error = e.Message;
-                    value = default(T);
-                    return false;
-                }
+            } catch (Exception e)
+            {
+                error = e.Message;
+                value = default(T);
+                return false;
             }
         }
 
