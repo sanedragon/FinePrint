@@ -25,6 +25,10 @@ namespace FinePrint
         //mandatory default constructor
         public VesselIdentityParameter()
         {
+            vesselMemo = null;
+            vesselID = Guid.Empty;
+            successCounter = 0;
+            eventsAdded = false;
         }
 
         public VesselIdentityParameter(Vessel vessel)
