@@ -57,6 +57,7 @@ namespace FinePrint
                 vesselMemo = FlightGlobals.Vessels.Find(v => v.id == vesselID);
                 if (vesselMemo == null)
                 {
+                    Debug.Log("FinePrint.VesselIdentityParameter.GetVessel Could not find our vessel in the vessel list.");
                     // Our vessel is gone. Nothing can be done.
                     base.SetFailed();
                     vesselID = Guid.Empty; // Don't keep looking for a vessel that's gone
@@ -94,8 +95,12 @@ namespace FinePrint
 
         private void VesselDestroy(Vessel v)
         {
+            Debug.Log("FinePrint.VesselIdentityParameter.VesselDestroy(" + v.GetName() + ")");
             if (v.id == vesselID)
+            {
+                Debug.Log("Dang, that's us!");
                 base.SetFailed();
+            }
         }
 
         protected override void OnSave(ConfigNode node)
@@ -108,9 +113,9 @@ namespace FinePrint
             Util.LoadNode<Guid>(node, "VesselIdentityParameter.OnLoad", "vesselID", ref vesselID, Guid.Empty);
             if (vesselID == Guid.Empty)
             {
-                if (this.Root.ContractState == Contract.State.Active)
-                    //no way to recover from that....
-                    base.SetFailed();
+                Debug.Log("Empty vessel ID.");
+                //no way to recover from that....
+                base.SetFailed();
             }
         }
 
